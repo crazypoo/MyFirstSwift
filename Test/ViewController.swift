@@ -16,10 +16,11 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     var tbView:UITableView?
     var items :NSMutableArray?
     var btnl:UIButton?
-
+    var viewTitle:String?
+        
     convenience init(arg:String,bgc:UIColor){
         self.init()
-        self.title = arg
+        viewTitle = arg
         self.view.backgroundColor = bgc
         
     }
@@ -30,23 +31,35 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         items = NSMutableArray()
 
         self.view.backgroundColor = UIColor(red: 0.2, green: 0.1, blue: 0.3, alpha: 1)        
-        let but = UIButton(frame:CGRect(x:0,y:0,width:100,height:30)) ;
-        but.setTitle("add",forState:.Normal);
-        but.addTarget(self,action:"ooooo",forControlEvents:.TouchUpInside);
-        but.backgroundColor = UIColor.blueColor();
+        let but = UIButton(frame:CGRect(x:0,y:0,width:100,height:30))
+        but.setTitle("add",forState:.Normal)
+        but.addTarget(self,action:"ooooo",forControlEvents:.TouchUpInside)
+        but.backgroundColor = UIColor.blueColor()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: but)
         
-        btnl = UIButton(frame:CGRect(x:0,y:0,width:100,height:30)) ;
-        btnl!.setTitle("edit",forState:.Normal);
-        btnl!.addTarget(self,action:"bbbbb",forControlEvents:.TouchUpInside);
-        btnl!.backgroundColor = UIColor.blueColor();
+        btnl = UIButton(frame:CGRect(x:0,y:0,width:100,height:30))
+        btnl!.setTitle("edit",forState:.Normal)
+        btnl!.addTarget(self,action:"bbbbb",forControlEvents:.TouchUpInside)
+        btnl!.backgroundColor = UIColor.blueColor()
         btnl!.tag = 100
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btnl!)
 
+        let tBtn = UIButton(frame:CGRect(x:0,y:0,width:100,height:30))
+        tBtn.setTitle(viewTitle,forState:.Normal);
+        tBtn.addTarget(self,action:"back",forControlEvents:.TouchUpInside)
+        tBtn.backgroundColor = UIColor.blueColor();
+        self.navigationItem.titleView = tBtn
         
         creatTbView()
-    }
+        println(CarrierSwift.currentRadioAccessTechnology())
+        println(CarrierSwift.subscriberCellularProvider())
 
+    }
+    func back()
+    {
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
     func creatTbView()
     {
         tbView = UITableView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height), style: .Plain)
@@ -127,6 +140,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         println("row = %d",indexPath.row)
+        let sec = SecondViewController(arg: "22222", bgc: UIColor.blueColor())
+        self.navigationController?.pushViewController(sec, animated: true)
     }
 
 
