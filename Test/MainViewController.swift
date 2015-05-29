@@ -35,10 +35,11 @@ class MainViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     
     func iadTap(object:NSNotification)
     {
-        println(object.object!.objectForKey("projectId"))
+//        println(object.object!.objectForKey("projectId"))
+        let info:String = object.object!.objectForKey("projectId") as! String
         let alert = UIAlertView()
         alert.title = "\(PCheckHack.isJailBroken())"
-        alert.message = "My message"
+        alert.message = "\(info)"
         alert.addButtonWithTitle("Ok")
         alert.show()
     }
