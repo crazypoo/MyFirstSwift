@@ -69,4 +69,5 @@ class SecondViewController: UIViewController,UICollectionViewDataSource,UICollec
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 }

@@ -21,6 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav = UINavigationController(rootViewController:MainViewController(arg: "主界面", bgc: UIColor.redColor()))
         window!.rootViewController = nav
         window!.makeKeyAndVisible()
+        
+        let str = "http://112.124.4.216/client/commons/commonAction_viewArchiveFirst.do?systemForm.archive.fileCatalog=PRO_IMG&systemForm.archive.relationId=2465138"
+        
+        BBLaunchAdMonitor.showAdAtPath(str, onView: self.window?.rootViewController?.view, timeInterval: 3, detailParameters: ["projectId":"2465138"], years: "1023", comName: "11111")
         return true
     }
 

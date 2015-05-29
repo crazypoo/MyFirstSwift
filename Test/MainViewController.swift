@@ -26,11 +26,22 @@ class MainViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        items = NSMutableArray(array: ["Table","Collection","HUB","Is Jail Broken?","Color"])
+        items = NSMutableArray(array: ["Table","Collection","HUB","Is Jail Broken?","Color","Call"])
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "iadTap:", name:"BBShowLaunchAdDetailNotification", object: nil)
         
         creatTbView()
     }
     
+    func iadTap(object:NSNotification)
+    {
+        println(object.object!.objectForKey("projectId"))
+        let alert = UIAlertView()
+        alert.title = "\(PCheckHack.isJailBroken())"
+        alert.message = "My message"
+        alert.addButtonWithTitle("Ok")
+        alert.show()
+    }
     func creatTbView()
     {
         tbView = UITableView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height), style: .Plain)
@@ -43,7 +54,7 @@ class MainViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 5
+        return 6
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -88,6 +99,11 @@ class MainViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
             alert.show()
         }
         
+        else if indexPath.row == 5
+        {
+            PooPhoneBlock.callPhoneNumber("13422781561", call: nil, cancel: nil)
+        }
+        
     }
     
     func stopHub(){
@@ -98,6 +114,5 @@ class MainViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
 }
