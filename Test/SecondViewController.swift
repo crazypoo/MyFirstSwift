@@ -50,7 +50,10 @@ class SecondViewController: UIViewController,UICollectionViewDataSource,UICollec
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! SecCell
         cell.cellTitle!.text = "1111"
-        cell.cellImage?.image = UIImage(named: "1")
+        let str:String = "http://112.124.4.216/client/commons/commonAction_viewArchiveFirst.do?systemForm.archive.fileCatalog=SHOP_IMG&systemForm.archive.relationId=2761020"
+        let nsurl = NSURL(string: str)
+        cell.cellImage!.sd_setImageWithURL(nsurl, placeholderImage: UIImage(named: "1"), completed: nil)
+
         return cell
     }
     

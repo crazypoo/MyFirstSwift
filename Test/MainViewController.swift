@@ -14,6 +14,7 @@ class MainViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     var tbView:UITableView?
     var items :NSMutableArray?
     var btnl:UIButton?
+    var colorView : UIView?
     
     convenience init(arg:String,bgc:UIColor){
         self.init()
@@ -25,7 +26,7 @@ class MainViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        items = NSMutableArray(array: ["Table","Collection"])
+        items = NSMutableArray(array: ["Table","Collection","HUB","Is Jail Broken?","Color"])
         
         creatTbView()
     }
@@ -42,13 +43,20 @@ class MainViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 2
+        return 5
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView .dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
         cell.textLabel!.text = "\(items!.objectAtIndex(indexPath.row))"
+        if indexPath.row == 4
+        {
+            colorView = UIView(frame:CGRectMake(100, 0, 100, cell.contentView.frame.size.height))
+            colorView!.backgroundColor = UIColor.randomColor()
+            cell.contentView.addSubview(colorView!)
+        }
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
     
@@ -65,11 +73,26 @@ class MainViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         {
             let sec = SecondViewController(arg: "Collection", bgc: UIColor.blueColor())
             self.navigationController?.pushViewController(sec, animated: true)
-
         }
+        else if indexPath.row == 2
+        {
+            WMHub .show()
+            NSTimer.scheduledTimerWithTimeInterval(3.0, target:self, selector:"stopHub", userInfo:nil, repeats:false)
+        }
+        else if indexPath.row == 3
+        {
+            let alert = UIAlertView()
+            alert.title = "\(PCheckHack.isJailBroken())"
+            alert.message = "My message"
+            alert.addButtonWithTitle("Ok")
+            alert.show()
+        }
+        
     }
     
-    
+    func stopHub(){
+        WMHub.hide()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
