@@ -173,7 +173,8 @@
 		DBD8C17D1B169FB70086C3ED /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = P;
 				TargetAttributes = {
 					DBD8C1841B169FB70086C3ED = {
@@ -303,6 +304,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -377,6 +379,7 @@
 				);
 				INFOPLIST_FILE = Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "HelloKity.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = MyFirstSwift;
 				SWIFT_OBJC_BRIDGING_HEADER = "Test/MyFirstSwift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -395,6 +398,7 @@
 				);
 				INFOPLIST_FILE = Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "HelloKity.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = MyFirstSwift;
 				SWIFT_OBJC_BRIDGING_HEADER = "Test/MyFirstSwift-Bridging-Header.h";
 			};

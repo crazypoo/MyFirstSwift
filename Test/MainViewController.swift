@@ -60,7 +60,7 @@ class MainViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView .dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView .dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
         cell.textLabel!.text = "\(items!.objectAtIndex(indexPath.row))"
         if indexPath.row == 4
         {

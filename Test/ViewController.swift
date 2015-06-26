@@ -51,8 +51,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
         self.navigationItem.titleView = tBtn
         
         creatTbView()
-        println(CarrierSwift.currentRadioAccessTechnology())
-        println(CarrierSwift.subscriberCellularProvider())
+        print(CarrierSwift.currentRadioAccessTechnology())
+        print(CarrierSwift.subscriberCellularProvider())
 
     }
     func back()
@@ -71,8 +71,8 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }
     func ooooo()
     {
-        var row = self.items!.count
-        var indexPath = NSIndexPath(forRow:row,inSection:0)
+        let row = self.items!.count
+        let indexPath = NSIndexPath(forRow:row,inSection:0)
         self.items?.addObject("1")
         tbView?.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
         btnl!.userInteractionEnabled = true
@@ -100,7 +100,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView .dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView .dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
         cell.textLabel!.text = String(format: "%i", indexPath.row+1)
         return cell
     }
@@ -139,7 +139,7 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        println("row = %d",indexPath.row)
+        print("row = %d",indexPath.row)
         let sec = SecondViewController(arg: "22222", bgc: UIColor.blueColor())
         self.navigationController?.pushViewController(sec, animated: true)
     }
